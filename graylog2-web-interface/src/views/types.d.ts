@@ -197,6 +197,11 @@ export interface ActionContexts {
 
 export type SearchTypeResults = { [id: string]: SearchTypeResultTypes[keyof SearchTypeResultTypes] };
 
+type MessageAugmentation = {
+  id: string,
+  component: React.ComponentType,
+}
+
 declare module 'graylog-web-plugin/plugin' {
   export interface PluginExports {
     creators?: Array<Creator>;
@@ -204,6 +209,7 @@ declare module 'graylog-web-plugin/plugin' {
     externalValueActions?: Array<ActionDefinition>;
     fieldActions?: Array<ActionDefinition>;
     messageEventTypes?: Array<MessageEventType>;
+    messageAugmentations?: Array<MessageAugmentation>;
     searchTypes?: Array<SearchType>;
     systemConfigurations?: Array<SystemConfiguration>;
     valueActions?: Array<ActionDefinition>;
