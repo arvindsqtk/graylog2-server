@@ -182,7 +182,7 @@ const MessageDetail = ({
                            index={index}
                            receivedBy={receivedBy}
                            streams={streamsListItems} />
-          <MessageAugmentations />
+          <MessageAugmentations message={message} />
         </Col>
         <Col md={9}>
           <MessageFields message={message}

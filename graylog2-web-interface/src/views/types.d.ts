@@ -199,7 +199,7 @@ export type SearchTypeResults = { [id: string]: SearchTypeResultTypes[keyof Sear
 
 type MessageAugmentation = {
   id: string,
-  component: React.ComponentType,
+  component: React.ComponentType<{ message: Message }>,
 }
 
 declare module 'graylog-web-plugin/plugin' {
