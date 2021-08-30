@@ -17,21 +17,13 @@
 import * as React from 'react';
 import { render, screen } from 'wrappedTestingLibrary';
 import asMock from 'helpers/mocking/AsMock';
+import { simpleMessage as message } from 'fixtures/messages';
 
 import usePluginEntities from 'views/logic/usePluginEntities';
 
 import MessageAugmentations from './MessageAugmentations';
 
 jest.mock('views/logic/usePluginEntities');
-
-const simpleMessage = {
-  decoration_stats: null,
-  fields: { took_ms: 62, source: 'example.org' },
-  formatted_fields: { took_ms: 62, source: 'example.org' },
-  highlight_ranges: {},
-  id: 'message-id',
-  index: 'grayog_0',
-};
 
 describe('MessageAugmentations', () => {
   it('should render augmentations', () => {
@@ -47,7 +39,7 @@ describe('MessageAugmentations', () => {
     ];
     asMock(usePluginEntities).mockImplementation((entityKey) => ({ messageAugmentations: simpleAugmentations }[entityKey]));
 
-    render(<MessageAugmentations message={simpleMessage} />);
+    render(<MessageAugmentations message={message} />);
 
     expect(screen.getByText('The First Augmentation')).toBeInTheDocument();
     expect(screen.getByText('The Second Augmentation')).toBeInTheDocument();
